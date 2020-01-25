@@ -11,6 +11,9 @@
 	
     <properties>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<sonar.language>java</sonar.language>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<sonar.projectKey>SB_D</sonar.projectKey>
     </properties>
     
     <!-- Spring Parent Project -->
@@ -47,13 +50,7 @@
         </dependency>
         
     </dependencies>
-    <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.language>java</sonar.language>
-		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.projectKey>SB_D</sonar.projectKey>
-	</properties>
-	
+    	
 	
     <build>
     	<plugins>
