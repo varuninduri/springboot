@@ -118,11 +118,16 @@
     	</plugins>
     </build>
 	<distributionManagement>
-		<repository>
-			<id>artifactory</id>
-			<name>Springboot_demo</name>
-			<url>http://localhost:8081/artifactory/Springboot_demo</url>
-		</repository>
-	</distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>instance-1-releases</name>
+        <url>http://35.244.29.149:8081/artifactory/Springboot_demo</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>instance-1-snapshots</name>
+        <url>http://35.244.29.149:8081/artifactory/Springboot_demo</url>
+    </snapshotRepository>
+</distributionManagement>
 	
 </project>
