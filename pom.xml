@@ -93,5 +93,12 @@
 			</plugin>
     	</plugins>
     </build>
+	<distributionManagement>
+		<repository>
+			<id>artifactory</id>
+			<name>Springboot_demo</name>
+			<url>http://localhost:8081/artifactory/Springboot_demo</url>
+		</repository>
+	</distributionManagement>
 	
 </project>
