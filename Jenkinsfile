@@ -24,7 +24,7 @@ pipeline {
                 )
 
                 rtMavenResolver (
-                    id: "maven-3.5.4",
+                    id: "maven-3.5.4.1",
                     serverId: "artifactory",
                     releaseRepo: "libs-release",
                     snapshotRepo: "libs-snapshot"
@@ -39,7 +39,7 @@ pipeline {
                     pom: 'pom.xml',
                     goals: 'clean install',
                     deployerId: "maven-3.5.4",
-                    resolverId: "maven-3.5.4"
+                    resolverId: "maven-3.5.4.1"
                 )
             }
         }
