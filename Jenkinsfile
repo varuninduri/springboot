@@ -1,6 +1,9 @@
   
 pipeline {
     agent any
+  tools {
+	maven 'maven-3.5.4' 
+}
     stages {
         stage ('Clone') {
             steps {
@@ -8,42 +11,13 @@ pipeline {
             }
         }
 
-        stage ('Artifactory configuration') {
+        stage ('Sonar Qube Analysis') {
             steps {
-                rtServer (
-                    id: "jfrog_artifactory",
-                    url: "http://localhost:8081/artifactory",
-                    credentialsId: "artifactory"
-                )
-
-                rtMavenDeployer (
-                    id: "maven-3.5.4.1",
-                    serverId: "jfrog_artifactory",
-                    releaseRepo: "libs-release-local",
-                    snapshotRepo: "libs-snapshot-local"
-                )
-
-                rtMavenResolver (
-                    id: "maven-3.5.4.2",
-                    serverId: "jfrog_artifactory",
-                    releaseRepo: "libs-release",
-                    snapshotRepo: "libs-snapshot"
-                )
+                sh 'mvn sonar:sonar'
             }
         }
 
-        stage ('Exec Maven') {
-            steps {
-                rtMavenRun (
-                    tool: 'maven-3.5.4', // Tool name from Jenkins configuration
-                    pom: 'pom.xml',
-                    goals: 'clean install',
-                    deployerId: "maven-3.5.4.1",
-                    resolverId: "maven-3.5.4.2"
-                )
-            }
-        }
-
+       
         stage ('Publish build info') {
             steps {
                 rtPublishBuildInfo (
