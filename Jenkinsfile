@@ -27,21 +27,13 @@ pipeline {
             steps {
                sh 'mvn test'
             }
-	post {
-      always {
-        junit '**/reports/junit/*.xml'
-      }
-   } 	
+ 	junit 'target/surefire-reports/*.xml'
         }
 	stage ('Cobertura coverage report') {
             steps {
                sh 'mvn cobertura:cobertura'
             }
-	post {
-        always {
-          step([$class: 'CoberturaPublisher', coberturaReportFile: '**/coverage/coverage.xml'])
-        }
-      }	
+	cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false
         }
 	stage ('Package to jar ') {
             steps {
