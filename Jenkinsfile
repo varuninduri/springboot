@@ -27,11 +27,21 @@ pipeline {
             steps {
                sh 'mvn test'
             }
+	post {
+      always {
+        junit '**/reports/junit/*.xml'
+      }
+   } 	
         }
 	stage ('Cobertura coverage report') {
             steps {
                sh 'mvn cobertura:cobertura'
             }
+	post {
+        always {
+          step([$class: 'CoberturaPublisher', coberturaReportFile: '**/coverage/coverage.xml'])
+        }
+      }	
         }
 	stage ('Package to jar ') {
             steps {
