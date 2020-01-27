@@ -11,21 +11,21 @@ pipeline {
         stage ('Artifactory configuration') {
             steps {
                 rtServer (
-                    id: "artifactory",
+                    id: "jfrog_artifactory",
                     url: "http://localhost:8081/artifactory",
                     credentialsId: artifactory
                 )
 
                 rtMavenDeployer (
                     id: "maven-3.5.4.1",
-                    serverId: "artifactory",
+                    serverId: "jfrog_artifactory",
                     releaseRepo: "libs-release-local",
                     snapshotRepo: "libs-snapshot-local"
                 )
 
                 rtMavenResolver (
                     id: "maven-3.5.4.2",
-                    serverId: "artifactory",
+                    serverId: "jfrog_artifactory",
                     releaseRepo: "libs-release",
                     snapshotRepo: "libs-snapshot"
                 )
