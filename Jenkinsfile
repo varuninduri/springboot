@@ -17,14 +17,14 @@ pipeline {
                 )
 
                 rtMavenDeployer (
-                    id: "maven-3.5.4",
+                    id: "maven-3.5.4.1",
                     serverId: "artifactory",
                     releaseRepo: "libs-release-local",
                     snapshotRepo: "libs-snapshot-local"
                 )
 
                 rtMavenResolver (
-                    id: "maven-3.5.4.1",
+                    id: "maven-3.5.4.2",
                     serverId: "artifactory",
                     releaseRepo: "libs-release",
                     snapshotRepo: "libs-snapshot"
@@ -35,11 +35,11 @@ pipeline {
         stage ('Exec Maven') {
             steps {
                 rtMavenRun (
-                    tool: maven-3.5.4, // Tool name from Jenkins configuration
+                    tool: 'maven-3.5.4', // Tool name from Jenkins configuration
                     pom: 'pom.xml',
                     goals: 'clean install',
-                    deployerId: "maven-3.5.4",
-                    resolverId: "maven-3.5.4.1"
+                    deployerId: "maven-3.5.4.1",
+                    resolverId: "maven-3.5.4.2"
                 )
             }
         }
