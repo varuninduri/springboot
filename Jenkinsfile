@@ -13,7 +13,7 @@ pipeline {
                 rtServer (
                     id: "jfrog_artifactory",
                     url: "http://localhost:8081/artifactory",
-                    credentialsId: artifactory
+                    credentialsId: "artifactory"
                 )
 
                 rtMavenDeployer (
