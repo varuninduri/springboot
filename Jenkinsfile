@@ -23,5 +23,20 @@ pipeline {
                sh 'mvn sonar:sonar'
             }
         }
+	stage ('Unit Testing') {
+            steps {
+               sh 'mvn test'
+            }
+        }
+	stage ('Cobertura coverage report') {
+            steps {
+               sh 'mvn cobertura:cobertura'
+            }
+        }
+	stage ('Package to jar ') {
+            steps {
+               sh 'mvn package'
+            }
+        } 
     }
 }
