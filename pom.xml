@@ -119,11 +119,11 @@
     </build>
 
 	<distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>instance-1-snapshots</name>
-        <url>http://35.244.29.149:8081/artifactory/libs-snapshot-local</url>
-    </snapshotRepository>
+    <repository>
+        <id>central</id>
+        <name>instance-1-releases</name>
+        <url>http://35.244.29.149:8081/artifactory/libs-release-local</url>
+    </repository>
 </distributionManagement>
 	
 </project>
