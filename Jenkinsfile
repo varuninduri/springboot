@@ -11,18 +11,16 @@ pipeline {
             }
         }
 
-        stage ('Sonar Qube Analysis') {
+        stage ('Compile') {
             steps {
-                sh 'mvn sonar:sonar'
+                sh 'mvn compile'
             }
         }
 
        
-        stage ('Publish build info') {
+        stage ('sonar qube analysis') {
             steps {
-                rtPublishBuildInfo (
-                    serverId: "artifactory"
-                )
+               sh 'mvn sonar:sonar'
             }
         }
     }
