@@ -21,7 +21,7 @@ pipeline {
         }
     stage ('Clean') {
             steps {
-                sh 'mvn clean'                
+                mavenTasks( step: "clean" )                
             }
         }
     }
