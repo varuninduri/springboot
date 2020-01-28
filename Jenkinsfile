@@ -14,7 +14,7 @@ pipeline {
             steps {
             gitCheckout(
                 branch: "master",
-                url: "https://gs_mrt@bitbucket.org/gs_mrt/simple-java-maven-app.git"
+                url: "https://github.com/varuninduri/springboot.git"
             )
             }
         }
