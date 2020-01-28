@@ -24,5 +24,30 @@ pipeline {
                 mavenTasks( step: "clean" )                
             }
         }
+    stage ('Compile') {
+            steps {
+                mavenTasks( step: "compile" )                
+            }
+        }
+    stage ('sonar analysis') {
+            steps {
+                mavenTasks( step: "sonar" )                
+            }
+        }
+    stage ('test') {
+            steps {
+                mavenTasks( step: "test" )                
+            }
+        }
+    stage ('coverage') {
+            steps {
+                mavenTasks( step: "coverage" )                
+            }
+        }
+    stage ('package') {
+            steps {
+                mavenTasks( step: "package" )                
+            }
+        }  
     }
 }
