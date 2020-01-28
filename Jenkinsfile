@@ -13,7 +13,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
             gitCheckout(
-                branch: "master",
+                branch: "shared_lib",
                 url: "https://github.com/varuninduri/springboot.git"
             )
             }
