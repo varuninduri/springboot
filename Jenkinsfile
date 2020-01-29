@@ -48,7 +48,8 @@ pipeline {
         }
     stage ('package') {
             steps {
-                mavenTasks( step: "package" )                
+                mavenTasks( step: "package" )
+                mavenTasks(typeBuild: "jar")
             }
         }  
     }
