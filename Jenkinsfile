@@ -36,16 +36,14 @@ pipeline {
         }
     stage ('test') {
             steps {
-             mavenTasks( step: "test" ){
-              (testreport:true)
-             }
+             mavenTasks( step: "test" )
+              mavenTasks( testreport: true )
             }
         }
     stage ('coverage') {
             steps {
-             mavenTasks( step: "coverage" ){
-             (coveragereport:true)
-             }
+             mavenTasks( step: "coverage" )
+             mavenTasks( coveragereport: true )
             }
         }
     stage ('package') {
