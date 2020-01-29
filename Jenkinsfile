@@ -49,7 +49,6 @@ pipeline {
     stage ('package') {
             steps {
                 mavenTasks( step: "package" )
-                mavenTasks( buildtype: "jar")
             }
         }  
     }
