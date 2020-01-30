@@ -50,6 +50,11 @@ pipeline {
             steps {
                 mavenTasks( step: "package" )
             }
-        }  
+        }
+    stage ('artifactory') {
+            steps {
+                mavenTasks( step: "artifactory" )
+            }
+        }    
     }
 }
